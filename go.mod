@@ -1,3 +1,3 @@
-module github.com/iamkanishka/wise-go
+module github.com/iamkanishka/wise-client-go
 
 go 1.25

@@ -3,7 +3,7 @@
 A production-grade Go client for the [Wise Platform API](https://docs.wise.com/api-reference).
 
 [![Go Version](https://img.shields.io/badge/go-1.25%2B-blue)](https://go.dev)
-[![Module](https://img.shields.io/badge/module-github.com%2Fiamkanishka%2Fwise-blue)](https://github.com/iamkanishka/wise-go)
+[![Module](https://img.shields.io/badge/module-github.com%2Fiamkanishka%2Fwise-blue)](https://github.com/iamkanishka/wise-client-go)
 
 ## Features
 
@@ -21,7 +21,7 @@ A production-grade Go client for the [Wise Platform API](https://docs.wise.com/a
 ## Installation
 
 ```bash
-go get github.com/iamkanishka/wise-go/wise
+go get github.com/iamkanishka/wise-client-go/wise
 ```
 
 Requires **Go 1.25+**.
@@ -39,7 +39,7 @@ import (
     "log"
     "os"
 
-    "github.com/iamkanishka/wise-go/wise"
+    "github.com/iamkanishka/wise-client-go/wise"
 )
 
 func main() {
@@ -270,7 +270,7 @@ client, _ := wise.New(
 ## Package Structure
 
 ```
-github.com/iamkanishka/wise-go/
+github.com/iamkanishka/wise-client-go/
 ├── wise.go                    Package documentation
 ├── go.mod
 ├── .golangci.yml

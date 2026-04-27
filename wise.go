@@ -2,7 +2,7 @@
 //
 // The SDK implementation lives in the wise sub-package:
 //
-//	import "github.com/iamkanishka/wise-go/wise"
+//	import "github.com/iamkanishka/wise-client-go/wise"
 //
 // # Quick Start
 //

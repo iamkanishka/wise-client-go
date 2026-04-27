@@ -11,7 +11,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/iamkanishka/wise-go/wise"
+	"github.com/iamkanishka/wise-client-go/wise"
 )
 
 func main() {

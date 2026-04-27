@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/iamkanishka/wise-go/wise/internal/ratelimit"
+	"github.com/iamkanishka/wise-client-go/wise/internal/ratelimit"
 )
 
 // TokenRefreshFunc is called when the current OAuth access token expires.

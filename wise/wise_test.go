@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/iamkanishka/wise-go/wise"
+	"github.com/iamkanishka/wise-client-go/wise"
 )
 
 // ---------------------------------------------------------------------------
