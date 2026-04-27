@@ -1,4 +1,4 @@
-# wise-go
+# wise-client-go
 
 A production-grade Go client for the [Wise Platform API](https://docs.wise.com/api-reference).
 
