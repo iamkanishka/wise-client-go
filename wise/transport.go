@@ -16,13 +16,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/iamkanishka/wise/wise/internal/ratelimit"
+	"github.com/iamkanishka/wise-go/wise/internal/ratelimit"
 )
 
 const (
 	defaultTimeout    = 30 * time.Second
 	defaultMaxRetries = 3
-	defaultUserAgent  = "wise-go/1.0.0 (+https://github.com/iamkanishka/wise)"
+	defaultUserAgent  = "wise-go/1.0.0 (+https://github.com/iamkanishka/wise-go)"
 
 	headerAuthorization  = "Authorization"
 	headerContentType    = "Content-Type"

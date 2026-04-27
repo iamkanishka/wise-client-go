@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/iamkanishka/wise/wise/internal/ratelimit"
+	"github.com/iamkanishka/wise-go/wise/internal/ratelimit"
 )
 
 func TestTokenBucket_AllowsRequests(t *testing.T) {

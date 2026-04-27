@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/iamkanishka/wise/wise"
+	"github.com/iamkanishka/wise-go/wise"
 )
 
 func main() {

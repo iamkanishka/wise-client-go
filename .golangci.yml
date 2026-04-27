@@ -77,7 +77,7 @@ linters-settings:
       - hugeParam        # Acceptable in SDK layer
 
   goimports:
-    local-prefixes: github.com/iamkanishka/wise
+    local-prefixes: github.com/iamkanishka/wise-go
 
   godot:
     scope: declarations
@@ -103,7 +103,7 @@ linters-settings:
       - errors.Join(
       - fmt.Errorf(
     ignorePackageGlobs:
-      - github.com/iamkanishka/wise/internal/*
+      - github.com/iamkanishka/wise-go/internal/*
 
   gosec:
     excludes:
@@ -116,9 +116,9 @@ linters-settings:
 
   exhaustruct:
     exclude:
-      - "^github\\.com/iamkanishka/wise\\..*Request$"
-      - "^github\\.com/iamkanishka/wise\\..*Params$"
-      - "^github\\.com/iamkanishka/wise\\..*Config$"
+      - "^github\\.com/iamkanishka/wise-go\\..*Request$"
+      - "^github\\.com/iamkanishka/wise-go\\..*Params$"
+      - "^github\\.com/iamkanishka/wise-go\\..*Config$"
 
 issues:
   exclude-rules:
