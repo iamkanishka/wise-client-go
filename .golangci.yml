@@ -1,0 +1,162 @@
+# .golangci.yml — Wise Go SDK linting configuration
+# Run: golangci-lint run ./...
+
+linters:
+  enable:
+    # Core quality
+    - errcheck         # Check error returns are handled
+    - gosimple         # Simplifications
+    - govet            # go vet checks
+    - ineffassign      # Ineffective assignments
+    - staticcheck      # Broad static analysis (includes SA, S, ST checkers)
+    - unused           # Unused code
+
+    # Style & correctness
+    - bodyclose        # HTTP response bodies must be closed
+    - contextcheck     # Check context usage
+    - durationcheck    # Incorrect duration math
+    - errorlint        # Error wrapping/unwrapping issues
+    - exhaustruct      # All struct fields must be initialised (optional, see config)
+    - gocritic         # Broad set of opinionated checks
+    - godot            # Comments end with a period
+    - gofmt            # Formatting
+    - goimports        # Import grouping
+    - misspell         # Spell check
+    - noctx            # http.NewRequest should use NewRequestWithContext
+    - revive           # Fast, configurable linter (replacement for golint)
+    - rowserrcheck     # database/sql rows.Err() must be checked
+    - sqlclosecheck    # sql.Rows / sql.Stmt must be closed
+    - unconvert        # Unnecessary type conversions
+    - unparam          # Unused function parameters
+    - whitespace       # Unnecessary whitespace
+    - wrapcheck        # Errors from external packages must be wrapped
+
+    # Security
+    - gosec            # Security issues (G**)
+
+    # Complexity
+    - cyclop           # Cyclomatic complexity
+    - funlen           # Function length
+    - maintidx         # Maintainability index
+
+  disable:
+    - exhaustive       # Too strict for SDK sum-type switches
+    - forcetypeassert  # We validate before asserting
+    - gochecknoinits   # We use init() for package-level doc
+    - lll              # Line length — handled by gofmt
+
+linters-settings:
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+
+  revive:
+    rules:
+      - name: exported
+        arguments:
+          - checkPrivateReceivers
+          - disableStutteringCheck
+      - name: var-naming
+      - name: package-comments
+      - name: unused-parameter
+        disabled: true      # covered by unparam
+      - name: error-return
+      - name: if-return
+      - name: increment-decrement
+      - name: range
+      - name: errorf
+
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+    disabled-checks:
+      - commentedOutCode
+      - whyNoLint
+      - hugeParam        # Acceptable in SDK layer
+
+  goimports:
+    local-prefixes: github.com/iamkanishka/wise
+
+  godot:
+    scope: declarations
+    capital: true
+    period: true
+
+  cyclop:
+    max-complexity: 15
+    package-average: 8.0
+
+  funlen:
+    lines: 100
+    statements: 60
+
+  maintidx:
+    under: 20
+
+  wrapcheck:
+    ignoreSigs:
+      - .Errorf(
+      - errors.New(
+      - errors.Unwrap(
+      - errors.Join(
+      - fmt.Errorf(
+    ignorePackageGlobs:
+      - github.com/iamkanishka/wise/internal/*
+
+  gosec:
+    excludes:
+      - G115   # integer overflow (acceptable in HTTP status)
+    config:
+      G306: "0600"
+
+  misspell:
+    locale: US
+
+  exhaustruct:
+    exclude:
+      - "^github\\.com/iamkanishka/wise\\..*Request$"
+      - "^github\\.com/iamkanishka/wise\\..*Params$"
+      - "^github\\.com/iamkanishka/wise\\..*Config$"
+
+issues:
+  exclude-rules:
+    # Test files are exempt from some rules
+    - path: "_test\\.go"
+      linters:
+        - errcheck
+        - wrapcheck
+        - gosec
+        - funlen
+        - exhaustruct
+        - maintidx
+        - cyclop
+
+    # Examples are exempt from some rules
+    - path: "examples/"
+      linters:
+        - wrapcheck
+        - exhaustruct
+        - funlen
+
+    # Internal packages are exempt from godoc requirements
+    - path: "internal/"
+      linters:
+        - godot
+        - revive
+
+    # Allow long lines in generated/static content
+    - linters:
+        - lll
+      source: "^//go:generate"
+
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  new: false
+
+run:
+  timeout: 5m
+  go: "1.25"
+  tests: true
+  allow-parallel-runners: true
